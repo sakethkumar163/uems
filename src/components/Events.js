@@ -3,8 +3,6 @@ import axios from "axios";
 
 const Events = () => {
   const api = process.env.REACT_APP_BACKEND_API;
-  console.log(api);
-  console.log(process.env.REACT_APP_API_URL); // should print the URL
 
   
   const [pastEvents, setPastEvents] = useState([]);
