@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react';
-import axios from 'axios';
 
 const AuthContext = createContext();
 
@@ -9,12 +8,13 @@ const predefinedUsers = [
 ];
 
 const AuthProvider = ({ children }) => {
+    const api = process.env.REACT_APP_BACKEND_API;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
   const login = async (username, password) => {
     try {
-      const response = await fetch('http://localhost:3500/api/users/login', {
+      const response = await fetch(`https://uems-backend-9uce.onrender.com/api/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
 
   const register = async (username, password) => {
     try {
-      const response = await fetch('http://localhost:3500/api/users/register', {
+      const response = await fetch(`https://uems-backend-9uce.onrender.com/api/users/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

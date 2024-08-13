@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Events = () => {
+  const api = process.env.REACT_APP_BACKEND_API;
+  console.log(api);
+  console.log(process.env.REACT_APP_API_URL); // should print the URL
+
+  
   const [pastEvents, setPastEvents] = useState([]);
   const [ongoingEvents, setOngoingEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
@@ -9,7 +14,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:3500/events"); 
+        const response = await axios.get(`https://uems-backend-9uce.onrender.com/events`); 
         const events = response.data;
         const now = new Date();
 

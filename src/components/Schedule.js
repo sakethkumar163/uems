@@ -3,6 +3,7 @@ import { AuthContext } from './AuthContext';
 import axios from "axios"
 
 const Schedule = () => {
+  const api = process.env.REACT_APP_BACKEND_API;
   const {currentUser } = useContext(AuthContext);
   const [activeStep, setActiveStep] = useState(1);
   const [eventName,setEventName] = useState("");
@@ -36,7 +37,7 @@ const Schedule = () => {
 
   const handleRequest = async(e) => {
     e.preventDefault();
-        await axios.post("http://localhost:3500/events",{
+        await axios.post(`https://uems-backend-9uce.onrender.com/events`,{
           userName,
           eventName,
           eventType,
